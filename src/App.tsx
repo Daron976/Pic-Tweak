@@ -10,27 +10,31 @@ function App() {
   const [range, setRange] = useState(0);
   const [rangeClick, setRangeClick] = useState(false);
 
-  const newImage = (e, url, fil) => {
+  const newImage = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, url: string, fil: string) => {
     e.preventDefault();
     if (rangeClick === false && range === 0) {
       setRangeClick(true);
     } else {
       const newFilter = filterLogic(fil, range);
-
+      //@ts-expect-error fabric is external
       new fabric.Image.fromURL(url, (img) => {
-        img.filters.push(
-          ...newFilter,
-        );
+        if(img.filters != undefined) {          
+          img.filters.push(
+            //@ts-expect-error spread is required for code implementation
+            ...newFilter,
+          );
+        }
         img.applyFilters();
-        setPreview(img.toDataURL());
+        setPreview(img.toDataURL({quality: 1}));
       }, { crossOrigin: 'anonymous' });
 
       setRangeClick(false);
     }
   };
 
-  const addImage = (e) => {
+  const addImage = (e: { target: { files: File; value: React.SetStateAction<string>; }; }) => {
     if (e.target.files) {
+      //@ts-expect-error lenght of files is 1
       const pic = e.target.files[0];
       const newImg = URL.createObjectURL(pic);
       setImage(newImg);
@@ -65,12 +69,14 @@ function App() {
             className="file-custom"
             name="image-file"
             accept="image/*"
+            //@ts-expect-error addImage is linked to fabric which is an external library
             onChange={addImage}
           />
           <input
             type="url"
             id="image-url"
             name="image-url"
+            //@ts-expect-error addImage is linked to fabric which is an external library
             onChange={addImage}
             placeholder="Image url"
           />
