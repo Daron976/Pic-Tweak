@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { fabric } from 'fabric';
 import { saveAs } from 'file-saver';
-import filterLogic from './filter';
-import Header from './Header';
+import filterLogic from './modules/filter';
+import Header from './modules/Header';
 
 function App() {
   const [image, setImage] = useState('https://images.unsplash.com/photo-1545424273-4dd93a233016?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
