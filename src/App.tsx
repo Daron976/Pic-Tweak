@@ -17,7 +17,7 @@ function App() {
     } else {
       const newFilter = filterLogic(fil, range);
 
-      new fabric.Image.fromURL(url, (img) => { // eslint-disable-line
+      new fabric.Image.fromURL(url, (img) => {
         img.filters.push(
           ...newFilter,
         );
@@ -81,10 +81,10 @@ function App() {
             min="0"
             max="100"
             onChange={(e) => {
-              if (range === true) {
-                setRange(false);
+              if (rangeClick === true) {
+                setRangeClick(false);
               }
-              setRange(e.target.value);
+              setRange(parseInt(e.target.value));
             }}
           />
           <small

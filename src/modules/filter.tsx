@@ -1,6 +1,6 @@
 import { fabric } from 'fabric';
 
-const filterLogic = (filOption, filStrength) => {
+const filterLogic = (filOption: string, filStrength: number) => {
   let filter;
   const vinFilter = new fabric.Image.filters.Vintage();
   const sepFilter = new fabric.Image.filters.Sepia();
