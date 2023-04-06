@@ -35,12 +35,10 @@ function App() {
         }
         img.applyFilters();
         setLoading(true);
-        // setPreview('https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif');
         setTimeout(() => {
           setLoading(false);
           setPreview(img.toDataURL({quality: 1}));  
         }, 3000);
-        // setPreview(img.toDataURL({quality: 1}));
       }, { crossOrigin: 'anonymous' });
 
       setRangeClick(false);
@@ -72,7 +70,6 @@ function App() {
           alt="user files"
           src={loading ? 'https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif' : preview}
         />
-        {/* <canvas id='canvas'/> */}
         <form
           action=""
           name="image-form"
