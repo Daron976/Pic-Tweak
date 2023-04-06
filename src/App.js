@@ -9,6 +9,7 @@ function App() {
   const [preview, setPreview] = useState('https://images.unsplash.com/photo-1545424273-4dd93a233016?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
   const [range, setRange] = useState(0);
   const [rangeClick, setRangeClick] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const newImage = (e, url, fil) => {
     e.preventDefault();
@@ -16,13 +17,23 @@ function App() {
       setRangeClick(true);
     } else {
       const newFilter = filterLogic(fil, range);
-
       new fabric.Image.fromURL(url, (img) => { // eslint-disable-line
-        img.filters.push(
-          ...newFilter,
-        );
+        if (img.filters !== undefined) {
+          img.filters.push(
+            ...newFilter,
+          );
+        }
+        fabric.textureSize = 8172;
+        const imageTextureSize = img.width > img.height ? img.width : img.height;
+        if (imageTextureSize > fabric.textureSize) {
+          fabric.textureSize = imageTextureSize;
+        }
         img.applyFilters();
-        setPreview(img.toDataURL());
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          setPreview(img.toDataURL({ quality: 1 }));
+        }, 3000);
       }, { crossOrigin: 'anonymous' });
 
       setRangeClick(false);
@@ -51,7 +62,7 @@ function App() {
       <div className="content">
         <img
           alt="user files"
-          src={preview}
+          src={loading ? 'https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif' : preview}
         />
         <form
           action=""
@@ -81,8 +92,8 @@ function App() {
             min="0"
             max="100"
             onChange={(e) => {
-              if (range === true) {
-                setRange(false);
+              if (rangeClick === true) {
+                setRangeClick(false);
               }
               setRange(e.target.value);
             }}
