@@ -9,6 +9,7 @@ function App() {
   const [preview, setPreview] = useState('https://images.unsplash.com/photo-1545424273-4dd93a233016?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
   const [range, setRange] = useState(0);
   const [rangeClick, setRangeClick] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const newImage = (e: React.MouseEvent<HTMLInputElement, MouseEvent>, url: string, fil: string) => {
     e.preventDefault();
@@ -24,8 +25,22 @@ function App() {
             ...newFilter,
           );
         }
+        fabric.textureSize = 8172;
+        //@ts-expect-error fabric is external
+        const imageTextureSize = img.width > img.height ? img.width : img.height;
+        //@ts-expect-error fabric is external
+        if (imageTextureSize > fabric.textureSize) {
+          //@ts-expect-error fabric is external
+          fabric.textureSize = imageTextureSize;
+        }
         img.applyFilters();
-        setPreview(img.toDataURL({quality: 1}));
+        setLoading(true);
+        // setPreview('https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif');
+        setTimeout(() => {
+          setLoading(false);
+          setPreview(img.toDataURL({quality: 1}));  
+        }, 3000);
+        // setPreview(img.toDataURL({quality: 1}));
       }, { crossOrigin: 'anonymous' });
 
       setRangeClick(false);
@@ -55,8 +70,9 @@ function App() {
       <div className="content">
         <img
           alt="user files"
-          src={preview}
+          src={loading ? 'https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif' : preview}
         />
+        {/* <canvas id='canvas'/> */}
         <form
           action=""
           name="image-form"
