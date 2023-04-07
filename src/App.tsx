@@ -3,6 +3,7 @@ import { fabric } from 'fabric';
 import { saveAs } from 'file-saver';
 import filterLogic from './modules/filter';
 import Header from './modules/Header';
+import * as htmlToImage from 'html-to-image';
 
 function App() {
   const [image, setImage] = useState('https://images.unsplash.com/photo-1545424273-4dd93a233016?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
@@ -58,8 +59,19 @@ function App() {
     }
   };
 
-  const downloadImage = () => {
+  const downloadPngImage = () => {
     saveAs(preview, 'filtered_image');
+  };
+
+  const downloadJpegImage = () => {
+    //@ts-expect-error required Element is an HTMLELement
+    htmlToImage.toJpeg(document.querySelector('.preview-img'), {quality: 1})
+    .then((url) => {
+      const link = document.createElement('a');
+      link.download = 'image.jpeg';
+      link.href = url;
+      link.click();
+    })
   };
 
   return (
@@ -67,6 +79,7 @@ function App() {
       <Header />
       <div className="content">
         <img
+        className='preview-img'
           alt="user files"
           src={loading ? 'https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif' : preview}
         />
@@ -76,36 +89,47 @@ function App() {
           id="image-form"
           method="get"
         >
-          <input
-            type="file"
-            id="image-file"
-            className="file-custom"
-            name="image-file"
-            accept="image/*"
-            //@ts-expect-error addImage is linked to fabric which is an external library
-            onChange={addImage}
-          />
-          <input
-            type="url"
-            id="image-url"
-            name="image-url"
-            //@ts-expect-error addImage is linked to fabric which is an external library
-            onChange={addImage}
-            placeholder="Image url"
-          />
-          <input
-            type="range"
-            id="filter-range"
-            name="filter-range"
-            min="0"
-            max="100"
-            onChange={(e) => {
-              if (rangeClick === true) {
-                setRangeClick(false);
-              }
-              setRange(parseInt(e.target.value));
-            }}
-          />
+          <div
+            className='image-upload'
+          >
+            <input
+              type="file"
+              id="image-file"
+              className="file-custom"
+              name="image-file"
+              accept="image/*"
+              data-buttonText='Upload Image file'
+              //@ts-expect-error addImage is linked to fabric which is an external library
+              onChange={addImage}
+            />
+            <small className='separator'>
+              <em>Or</em>
+            </small>
+            <input
+              type="url"
+              id="image-url"
+              name="image-url"
+              //@ts-expect-error addImage is linked to fabric which is an external library
+              onChange={addImage}
+              placeholder="Link to image"
+            />
+          </div>
+          <label htmlFor='filter-range' className='range-label'>
+            Filter Strength
+            <input
+              type="range"
+              id="filter-range"
+              name="filter-range"
+              min="0"
+              max="100"
+              onChange={(e) => {
+                if (rangeClick === true) {
+                  setRangeClick(false);
+                }
+                setRange(parseInt(e.target.value));
+              }}
+            />
+          </label>
           <small
             className="errmsg"
             style={{
@@ -150,9 +174,17 @@ function App() {
           type="button"
           name="download"
           id="download"
-          onClick={downloadImage}
+          onClick={downloadJpegImage}
         >
-          Download
+          Download as JPEG
+        </button>
+        <button
+          type="button"
+          name="download"
+          id="download"
+          onClick={downloadPngImage}
+        >
+          Download as PNG
         </button>
       </div>
     </section>

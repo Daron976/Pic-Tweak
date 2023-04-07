@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Header page renders as expected 1`] = `
+<div
+  className="intro"
+>
+  <h1>
+    Welcome to PicTweak
+  </h1>
+  <p>
+    Filter your image to your hearts content with what we have available
+  </p>
+</div>
+`;

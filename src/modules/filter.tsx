@@ -5,18 +5,19 @@ const filterLogic = (filOption: string, filStrength: number) => {
   //@ts-expect-error vintage is used in the demos but does not exist in the files
   const vinFilter = new fabric.Image.filters.Vintage();
   const sepFilter = new fabric.Image.filters.Sepia();
-  const satFilter = new fabric.Image.filters.Saturation({
-    saturation: filStrength / 100,
+  //@ts-expect-error vibrance is used in the demos but does not exist in the files
+  const strengthFilter = new fabric.Image.filters.Vibrance({
+    vibrance: filStrength / 50,
   });
   const fabFilter = new fabric.Image.filters.Blur({
     blur: filStrength / 100,
   });
   switch (filOption) {
     case 'vintage':
-      filter = [vinFilter, satFilter];
+      filter = [vinFilter, strengthFilter];
       break;
     case 'sepia':
-      filter = [sepFilter, satFilter];
+      filter = [sepFilter, strengthFilter];
       break;
     case 'blur':
       filter = [

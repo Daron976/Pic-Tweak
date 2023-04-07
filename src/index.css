@@ -35,10 +35,6 @@ h1 {
   width: max-content;
 }
 
-/* .intro p {
-  width: 90%;
-} */
-
 .content {
   display: flex;
   flex-direction: row-reverse;
@@ -66,6 +62,13 @@ img {
   transition-duration: 0.5s;
 }
 
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+}
+
 input,
 #download {
   height: 2.5rem;
@@ -73,10 +76,21 @@ input,
   border: none;
 }
 
-.filter-options {
+.filter-options,
+.download {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 0.5rem;
+}
+
+.download {
+  justify-content: center;
+}
+
+.range-label {
+  display: flex;
+  flex-direction: column;
 }
 
 .option-btn,
@@ -103,6 +117,7 @@ input,
   line-height: 1.5;
   border: 0.075rem solid #aeaeae;
   border-radius: 0.25rem;
+  content: 'Image';
 }
 
 input::-webkit-file-upload-button {
@@ -138,9 +153,14 @@ input::-webkit-file-upload-button:hover {
 
 /* mobile */
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 768px) {
   .content {
     flex-direction: column;
+  }
+
+  .App {
+    margin: 1rem 0;
+    height: 100%;
   }
 }
 

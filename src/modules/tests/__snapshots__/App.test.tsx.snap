@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App App page renders as expected 1`] = `
+<section
+  className="App"
+>
+  <div
+    className="intro"
+  >
+    <h1>
+      Welcome to PicTweak
+    </h1>
+    <p>
+      Filter your image to your hearts content with what we have available
+    </p>
+  </div>
+  <div
+    className="content"
+  >
+    <img
+      alt="user files"
+      className="preview-img"
+      src="https://images.unsplash.com/photo-1545424273-4dd93a233016?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    />
+    <form
+      action=""
+      id="image-form"
+      method="get"
+      name="image-form"
+    >
+      <div
+        className="image-upload"
+      >
+        <input
+          accept="image/*"
+          className="file-custom"
+          data-buttonText="Upload Image file"
+          id="image-file"
+          name="image-file"
+          onChange={[Function]}
+          type="file"
+        />
+        <small
+          className="separator"
+        >
+          <em>
+            Or
+          </em>
+        </small>
+        <input
+          id="image-url"
+          name="image-url"
+          onChange={[Function]}
+          placeholder="Link to image"
+          type="url"
+        />
+      </div>
+      <label
+        className="range-label"
+        htmlFor="filter-range"
+      >
+        Filter Strength
+        <input
+          id="filter-range"
+          max="100"
+          min="0"
+          name="filter-range"
+          onChange={[Function]}
+          type="range"
+        />
+      </label>
+      <small
+        className="errmsg"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        Please select a range
+      </small>
+      <div
+        className="filter-options"
+      >
+        <input
+          className="option-btn"
+          name="submit-btn"
+          onClick={[Function]}
+          type="button"
+          value="vintage"
+        />
+        <input
+          className="option-btn"
+          name="submit-btn"
+          onClick={[Function]}
+          type="button"
+          value="sepia"
+        />
+        <input
+          className="option-btn"
+          name="submit-btn"
+          onClick={[Function]}
+          type="button"
+          value="blur"
+        />
+      </div>
+    </form>
+  </div>
+  <div
+    className="download"
+  >
+    <button
+      id="download"
+      name="download"
+      onClick={[Function]}
+      type="button"
+    >
+      Download as JPEG
+    </button>
+    <button
+      id="download"
+      name="download"
+      onClick={[Function]}
+      type="button"
+    >
+      Download as PNG
+    </button>
+  </div>
+</section>
+`;
