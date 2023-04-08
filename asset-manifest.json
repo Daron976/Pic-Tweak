@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Pic-Tweak/static/css/main.2996165b.css",
-    "main.js": "/Pic-Tweak/static/js/main.62a1adf3.js",
-    "index.html": "/Pic-Tweak/index.html",
-    "main.2996165b.css.map": "/Pic-Tweak/static/css/main.2996165b.css.map",
-    "main.62a1adf3.js.map": "/Pic-Tweak/static/js/main.62a1adf3.js.map"
+    "main.css": "/Pic-Tweak/index.html/static/css/main.bd95e953.css",
+    "main.js": "/Pic-Tweak/index.html/static/js/main.62a1adf3.js",
+    "index.html": "/Pic-Tweak/index.html/index.html",
+    "main.bd95e953.css.map": "/Pic-Tweak/index.html/static/css/main.bd95e953.css.map",
+    "main.62a1adf3.js.map": "/Pic-Tweak/index.html/static/js/main.62a1adf3.js.map"
   },
   "entrypoints": [
-    "static/css/main.2996165b.css",
+    "static/css/main.bd95e953.css",
     "static/js/main.62a1adf3.js"
   ]
 }
