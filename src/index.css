@@ -12,9 +12,12 @@ body {
   width: 100%;
 }
 
-.App {
+.flex {
   display: flex;
   flex-direction: column;
+}
+
+.App {
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -23,8 +26,6 @@ body {
 }
 
 .intro {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   padding: 0 2.5rem;
   align-items: center;
@@ -36,7 +37,6 @@ h1 {
 }
 
 .content {
-  display: flex;
   flex-direction: row-reverse;
   gap: 5rem;
   align-items: center;
@@ -49,8 +49,6 @@ h1 {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
   gap: 2.5rem;
 }
 
@@ -62,9 +60,12 @@ img {
   transition-duration: 0.5s;
 }
 
+h2 {
+  font-size: 1rem;
+  text-align: start;
+}
+
 .image-upload {
-  display: flex;
-  flex-direction: column;
   text-align: center;
   gap: 1rem;
 }
@@ -78,7 +79,7 @@ input,
 
 .filter-options,
 .download {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   gap: 0.5rem;
@@ -88,9 +89,9 @@ input,
   justify-content: center;
 }
 
-.range-label {
-  display: flex;
-  flex-direction: column;
+fieldset {
+  border: none;
+  gap: 1rem;
 }
 
 .option-btn,
@@ -102,6 +103,11 @@ input,
 .option-btn:hover,
 #download:hover {
   cursor: pointer;
+}
+
+#download {
+  padding: 0.5rem;
+  width: 10rem;
 }
 
 #image-url {
@@ -183,6 +189,11 @@ input::-webkit-file-upload-button:hover {
   img {
     max-width: 15rem;
     max-height: 13rem;
+  }
+
+  .download {
+    flex-direction: column;
+    align-items: center;
   }
 }
 

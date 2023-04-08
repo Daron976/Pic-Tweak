@@ -75,23 +75,26 @@ function App() {
   };
 
   return (
-    <section className="App">
+    <section className="App flex">
       <Header />
-      <div className="content">
+      <div className="content flex">
         <img
         className='preview-img'
           alt="user files"
           src={loading ? 'https://raw.githubusercontent.com/Daron976/portfolio/main/images/loading.gif' : preview}
         />
         <form
-          action=""
           name="image-form"
           id="image-form"
           method="get"
+          className="flex"
         >
           <div
-            className='image-upload'
+            className='image-upload flex'
           >
+            <h2>
+              Image Upload
+            </h2>
             <input
               type="file"
               id="image-file"
@@ -114,8 +117,10 @@ function App() {
               placeholder="Link to image"
             />
           </div>
-          <label htmlFor='filter-range' className='range-label'>
-            Filter Strength
+          <label htmlFor='filter-range' className='range-label flex'>
+            <h2>
+              Filter Strength
+            </h2>
             <input
               type="range"
               id="filter-range"
@@ -138,38 +143,43 @@ function App() {
           >
             Please select a range
           </small>
-          <div className="filter-options">
-            <input
-              type="button"
-              value="vintage"
-              className="option-btn"
-              name="submit-btn"
-              onClick={(e) => {
-                newImage(e, image, 'vintage');
-              }}
-            />
-            <input
-              type="button"
-              value="sepia"
-              className="option-btn"
-              name="submit-btn"
-              onClick={(e) => {
-                newImage(e, image, 'sepia');
-              }}
-            />
-            <input
-              type="button"
-              value="blur"
-              className="option-btn"
-              name="submit-btn"
-              onClick={(e) => {
-                newImage(e, image, 'blur');
-              }}
-            />
-          </div>
+          <fieldset className='filters flex'>
+            <h2>
+              Filter Options
+            </h2>
+            <div className="filter-options flex">
+              <input
+                type="button"
+                value="vintage"
+                className="option-btn"
+                name="submit-btn"
+                onClick={(e) => {
+                  newImage(e, image, 'vintage');
+                }}
+              />
+              <input
+                type="button"
+                value="sepia"
+                className="option-btn"
+                name="submit-btn"
+                onClick={(e) => {
+                  newImage(e, image, 'sepia');
+                }}
+              />
+              <input
+                type="button"
+                value="blur"
+                className="option-btn"
+                name="submit-btn"
+                onClick={(e) => {
+                  newImage(e, image, 'blur');
+                }}
+              />
+            </div>
+          </fieldset>
         </form>
       </div>
-      <div className="download">
+      <div className="download flex">
         <button
           type="button"
           name="download"

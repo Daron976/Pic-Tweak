@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => (
-  <div className="intro">
+  <div className="intro flex">
     <h1>
       Welcome to PicTweak
     </h1>
