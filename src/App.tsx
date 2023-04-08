@@ -141,7 +141,7 @@ function App() {
               display: rangeClick ? 'block' : 'none',
             }}
           >
-            Please select a range
+            Please select a filter strength
           </small>
           <fieldset className='filters flex'>
             <h2>
